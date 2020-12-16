@@ -1,6 +1,6 @@
-if (NOT IS_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../libcxx")
-  message(FATAL_ERROR "libunwind requires being built in a monorepo layout with libcxx available")
-endif()
+#if (NOT IS_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/../libcxx")
+#  message(FATAL_ERROR "libunwind requires being built in a monorepo layout with libcxx available")
+#endif()
 
 #===============================================================================
 # Setup Project
@@ -43,7 +43,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR OR LIBUNWIND_STANDALONE_B
   set(LLVM_LIT_OUTPUT_DIR "${LIBUNWIND_BINARY_DIR}/bin")
 
   # Find the LLVM sources and simulate LLVM CMake options.
-  include(HandleOutOfTreeLLVM)
+#  include(HandleOutOfTreeLLVM)
 else()
   set(LLVM_LIT "${CMAKE_SOURCE_DIR}/utils/lit/lit.py")
 endif()
@@ -351,3 +351,5 @@ endif()
 if (EXISTS ${LLVM_CMAKE_PATH})
   add_subdirectory(test)
 endif()
+target_include_directories(unwind_shared PUBLIC include)
+target_include_directories(unwind_static PUBLIC include)

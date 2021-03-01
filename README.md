@@ -1,6 +1,6 @@
 # libunwind
 
-A standalone fork from [llvm libunwind](https://github.com/llvm/llvm-project/tree/main/libunwind) rev: 4dae2247fd62
+A standalone fork from [llvm#libunwind rev: 06c5119c76e9](https://github.com/llvm/llvm-project/tree/main/libunwind)
 
 ---
 

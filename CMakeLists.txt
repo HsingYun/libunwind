@@ -18,11 +18,12 @@ cmake_minimum_required(VERSION 3.13.4)
 # project name
 project(libunwind)
 
-# standalone build without llvm
-set(LIBUNWIND_STANDALONE_BUILD 1)
+enable_language(C CXX ASM)
 
-# add dummy cmake module path
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/libcxx/cmake/Modules")
+set(LLVM_INCLUDE_TESTS 0)
+
+# add llvm cmake module path
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
 
 # add llvm libunwind
 add_subdirectory(libunwind)

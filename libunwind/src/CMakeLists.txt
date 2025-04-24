@@ -13,10 +13,10 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "AIX")
 endif()
 
 set(LIBUNWIND_C_SOURCES
-    UnwindLevel1.c
-    UnwindLevel1-gcc-ext.c
-    Unwind-sjlj.c
-    Unwind-wasm.c
+#    UnwindLevel1.c
+#    UnwindLevel1-gcc-ext.c
+#    Unwind-sjlj.c
+#    Unwind-wasm.c
     )
 set_source_files_properties(${LIBUNWIND_C_SOURCES}
                             PROPERTIES

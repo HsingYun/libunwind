@@ -29,8 +29,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
 add_subdirectory(libunwind)
 
 # special compile flag for libunwind
-target_compile_options(unwind_shared PUBLIC -Wno-strict-aliasing -Wno-pedantic -Wno-sign-conversion -fPIC)
-target_compile_options(unwind_static PUBLIC -Wno-strict-aliasing -Wno-pedantic -Wno-sign-conversion -fPIC)
+target_compile_options(unwind_shared PUBLIC -Wno-strict-aliasing -Wno-pedantic -Wno-sign-conversion)
+target_compile_options(unwind_static PUBLIC -Wno-strict-aliasing -Wno-pedantic -Wno-sign-conversion)
 
 # add missing include path
 target_include_directories(unwind_shared PUBLIC libunwind/include)

@@ -18,6 +18,9 @@ cmake_minimum_required(VERSION 3.13.4)
 # project name
 project(libunwind)
 
+# add custom llvm cmake helper module
+include(cmake/custom.cmake)
+
 enable_language(C CXX ASM)
 
 set(LLVM_INCLUDE_TESTS 0)
@@ -28,9 +31,19 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
 # add llvm libunwind
 add_subdirectory(libunwind)
 
-# special compile flag for libunwind
-target_compile_options(unwind_shared PUBLIC -Wno-strict-aliasing -Wno-pedantic -Wno-sign-conversion)
-target_compile_options(unwind_static PUBLIC -Wno-strict-aliasing -Wno-pedantic -Wno-sign-conversion)
+# remove unused source files and compile options
+unwind_target_adjust(
+        TARGETS
+        unwind_static_objects
+        unwind_shared_objects
+        REMOVE_SOURCES
+        UnwindLevel1.c
+        UnwindLevel1-gcc-ext.c
+        Unwind-sjlj.c
+        Unwind-wasm.c
+        REMOVE_COMPILE_OPTIONS
+        -nostdlib++
+)
 
 # add missing include path
 target_include_directories(unwind_shared PUBLIC libunwind/include)
